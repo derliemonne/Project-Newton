@@ -51,9 +51,11 @@ class Ball:
         """
         Calculates eating another ball
         Self mass and self radius gets bigger depending on eaten ball
+        Self momentum changes depending on momentum of eaten ball
         This method doesn't actually delete eaten ball!
         :param ball: Ball: supposed to be eaten
         :return: None
         """
+        self.velocity = (self.mass * self.velocity + ball.mass * ball.velocity) / (self.mass + ball.mass)
         self.mass += ball.mass
         self.radius = ((3 * self.mass) / (4 * math.pi)) ** 0.5
